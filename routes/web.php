@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ListingController;
@@ -17,11 +18,14 @@ use App\Http\Controllers\ListingController;
 
 
 Route::get('/', [IndexController::class, 'index']);
-Route::get('/hello', [IndexController::class, 'show']);
+Route::get('/show', [IndexController::class, 'show'])->middleware('auth');
 
-Route::resource('listing', ListingController::class); //with only you choose the routes you want to create
+Route::resource('listing', ListingController::class)->only(['create','store','edit','update','destroy'])->middleware('auth');
+// password.confirm
+Route::resource('listing', ListingController::class)->except(['create','store','edit','update','destroy']);
 
 
-// Route::get('/', function () {
-//     return view('app');
-// });
+Route::get('login', [AuthController::class, 'create'])->name('login');
+Route::post('login', [AuthController::class, 'store'])->name('login.store');
+Route::delete('logout', [AuthController::class, 'destroy'])->name('logout');
+
