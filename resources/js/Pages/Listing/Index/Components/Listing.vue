@@ -10,14 +10,6 @@
             <ListingSpace  :listing="listing" class="text-lg"/>
             <ListingAdress :listing="listing" class="text-gray-400"/>
         </Link>&nbsp;
-        <div v-if="user">
-            <div>
-                <Link :href="route('listing.edit', {listing: listing.id})">edit</Link>
-            </div>
-            <div>
-                <Link :href="route('listing.destroy', {listing: listing.id})" method="DELETE" as="button">Delete</Link>
-            </div>
-        </div>
     </Box>
 </template>
 

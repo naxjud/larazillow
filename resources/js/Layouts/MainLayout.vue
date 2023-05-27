@@ -12,8 +12,12 @@
                 </div>
 
                 <div v-if="user" class="flex items-center gap-4">
-                    <div class="text-sm text-gray-500">{{ user.name }}</div>
-                    <Link :href="route('listing.create')" class="std_button">+ New Listing</Link>&nbsp;
+                    <Link  class="text-sm text-gray-500" :href="route('realtor.listing.index')">
+                        <div class="text-sm text-gray-500">
+                            {{ user.name }}
+                        </div>
+                    </Link>
+                    <Link :href="route('realtor.listing.create')" class="std_button">+ New Listing</Link>&nbsp;
                     <Link :href="route('logout')" method="delete" as="button" class="text-sm text-gray-500">logout</Link>
                 
                 </div>
