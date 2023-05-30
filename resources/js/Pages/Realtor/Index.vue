@@ -15,7 +15,8 @@
                     </div>
                     <ListingAdress :listing="listing" class="text-gray-500"></ListingAdress>
                 </div>
-                <div class="flex items-center gap-1 text-gray-600 dark:text-gray-300">
+                <section>
+                    <div class="flex items-center gap-1 text-gray-600 dark:text-gray-300">
                     <a 
                         class="btn-outline text-xs font-medium" 
                         :href="route('listing.show',{listing: listing.id})"
@@ -27,6 +28,10 @@
                     <Link  v-if="!listing.deleted_at"  :href="route('realtor.listing.destroy',{listing: listing.id})" class="btn-outline text-xs font-medium text-red-500" as="button" method="delete">Delete</Link>
                     <Link  v-else class="btn-outline text-xs font-medium text-green-500" as="button" :href="route('realtor.listing.restore',{listing: listing.id})" method="put">Restore</Link>
                 </div>
+                <div class="mt-2">
+                    <Link :href="route('realtor.listing.image.create',{listing: listing.id})" class="block w-full btn-outline text-xs font-medium text-center">Images ({{ listing.images_count }})</Link>
+                </div>
+                </section>
             </div>
         </Box>
     </section>
