@@ -27,12 +27,21 @@ class DatabaseSeeder extends Seeder
             'email' => 'user@example.com',
         ]);
 
+        \App\Models\User::factory()->create([
+            'name' => 'Normal User 2',
+            'email' => 'user2@example.com',
+        ]);
+
         \App\Models\Listing::factory(10)->create([
             'by_user_id' => 1
         ]);
 
         \App\Models\Listing::factory(10)->create([
             'by_user_id' => 2
+        ]);
+
+        \App\Models\Listing::factory(10)->create([
+            'by_user_id' => 3
         ]);
     }
 }
